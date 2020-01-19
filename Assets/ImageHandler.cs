@@ -29,8 +29,12 @@ public class ImageHandler : MonoBehaviour
             EventTrigger trigger = image.gameObject.AddComponent<EventTrigger>();
             trigger.triggers.Add(clickEntry);
 
-            Image playerImage = Instantiate(image, image.transform.position, image.transform.rotation);
-            playerImage.transform.SetParent(playerCanvas.transform);
+            Image playerImage = Instantiate(
+                image,
+                image.transform.position + playerCanvas.transform.position,
+                image.transform.rotation,
+                playerCanvas.transform
+            );
             playerImage.transform.localScale = image.transform.localScale;
         }
 
